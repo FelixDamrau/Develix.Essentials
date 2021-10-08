@@ -1,11 +1,7 @@
 ﻿name: NuGet push
-
 on:
-  workflow_run:
-    workflows: [".NET Build"]
+  push:
     branches: [ main ]
-    types:
-      - completed
 
 jobs:
   publish-nuget:
