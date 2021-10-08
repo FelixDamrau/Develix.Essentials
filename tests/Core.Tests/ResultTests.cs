@@ -7,11 +7,11 @@ public class ResultTests
     [Fact]
     public void ValidResult()
     {
-        var value = new Foo();
+        var value = 5;
         var result = Result.Ok(value);
 
         result.Value.Should().Be(value);
-            result.ValueOrDefault.Should().Be(value);
+        result.ValueOrDefault.Should().Be(value);
         result.Valid.Should().BeTrue();
         result.Message.Should().Be(default);
     }
@@ -20,11 +20,10 @@ public class ResultTests
     public void InvalidResult()
     {
         var message = "Fail";
-        var result = Result.Fail<Foo>(message);
+        var result = Result.Fail<int>(message);
 
         result.ValueOrDefault.Should().Be(default);
         result.Valid.Should().BeFalse();
-        if (!result.Valid)
         result.Message.Should().Be(message);
     }
 
@@ -38,6 +37,4 @@ public class ResultTests
 
         Assert.IsType<InvalidOperationException>(exception);
     }
-
-    class Foo { }
 }
