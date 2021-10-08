@@ -10,6 +10,10 @@
   <PropertyGroup>
     <PackageId>Develix.Essentials</PackageId>
     <PackageVersion>1.0.0-alpha001</PackageVersion>
-    
+    <Title>Develix Essentials</Title>
+    <PackageDescription>Develix Essentials, including F#-like Result class.</PackageDescription>
+    <Authors>Felix Damrau</Authors>
+    <RepositoryUrl>https://github.com/FelixDamrau/Develix.Essentials</RepositoryUrl>
   </PropertyGroup>
+
 </Project>
