@@ -10,6 +10,7 @@ public class ResultTests
         var value = 5;
         var result = Result.Ok(value);
 
+        result.Value.Should().Be(value);
         result.ValueOrDefault.Should().Be(value);
         result.Valid.Should().BeTrue();
         result.Message.Should().Be(default);
