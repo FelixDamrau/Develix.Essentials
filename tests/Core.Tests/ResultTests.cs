@@ -5,9 +5,10 @@ namespace Core.Tests;
 public class ResultTests
 {
     [Fact]
-    public void ValidResult()
+    public void ValidGenericResult()
     {
         var value = 5;
+        
         var result = Result.Ok(value);
 
         result.Value.Should().Be(value);
@@ -17,9 +18,10 @@ public class ResultTests
     }
 
     [Fact]
-    public void InvalidResult()
+    public void InvalidGenericResult()
     {
         var message = "Fail";
+        
         var result = Result.Fail<int>(message);
 
         result.ValueOrDefault.Should().Be(default);
@@ -28,13 +30,34 @@ public class ResultTests
     }
 
     [Fact]
-    public void InvalidResultThrowsOnGetValue()
+    public void InvalidGenericResultThrowsOnGetValue()
     {
         var message = "Fail";
+        
         var result = Result.Fail<int>(message);
 
         var exception = Record.Exception(() => result.Value);
 
         Assert.IsType<InvalidOperationException>(exception);
+    }
+
+    [Fact]
+    public void ValidVoidResult()
+    {
+        var result = Result.Ok();
+
+        result.Valid.Should().BeTrue();
+        result.Message.Should().Be(default);
+    }
+
+    [Fact]
+    public void InvalidVoidResult()
+    {
+        var message = "Fail";
+        
+        var result = Result.Fail(message);
+
+        result.Valid.Should().BeFalse();
+        result.Message.Should().Be(message);
     }
 }

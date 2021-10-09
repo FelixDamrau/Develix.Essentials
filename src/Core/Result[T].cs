@@ -7,13 +7,11 @@ namespace Develix.Essentials.Core;
 /// for instance, a method with the return type <typeparamref name="T"/>.
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public class Result<T>
+public class Result<T> : IResult
 {
     private readonly T? value;
 
-    /// <summary>
-    /// Specifies whether or not this <see cref="Result{T}"/> represents a successful evaluation.
-    /// </summary>
+    /// <inheritdoc />
     [MemberNotNullWhen(true, nameof(value))]
     [MemberNotNullWhen(true, nameof(ValueOrDefault))]
     [MemberNotNullWhen(false, nameof(Message))]
@@ -39,9 +37,7 @@ public class Result<T>
     /// </summary>
     public T? ValueOrDefault => value;
 
-    /// <summary>
-    /// The message that describes the state of this <see cref="Result{T}"/>, for instance, an error message.
-    /// </summary>
+    /// <inheritdoc />
     public string? Message { get; }
 
     internal Result(bool valid, T? value, string? message)
