@@ -7,7 +7,7 @@ namespace Develix.Essentials.Core;
 public interface IResult
 {
     /// <summary>
-    /// The message that describes the state of this <see cref="IResult}"/>, for instance, an error message.
+    /// The message that describes the state of this <see cref="IResult"/>, for instance, an error message.
     /// </summary>
     string? Message { get; }
 
