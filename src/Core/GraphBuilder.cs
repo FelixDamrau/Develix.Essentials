@@ -17,7 +17,7 @@ public class GraphBuilder<TVertex> : IGraphBuilderPhase<TVertex>, IVertexAddedPh
 
     IVertexAddedPhase<TVertex> IGraphBuilderPhase<TVertex>.AddVertex(TVertex vertexValue)
     {
-        if (graph.Vertices.FirstOrDefault(v => vertexValue.Equals(vertexValue)) is { } existingVertex)
+        if (graph.Vertices.FirstOrDefault(v => v.Value.Equals(vertexValue)) is { } existingVertex)
         {
             lastAddedVertex = existingVertex;
         }
