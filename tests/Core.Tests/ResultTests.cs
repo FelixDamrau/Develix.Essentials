@@ -1,6 +1,4 @@
-﻿using Develix.Essentials.Core;
-
-namespace Core.Tests;
+﻿namespace Develix.Essentials.Core.Tests;
 
 public class ResultTests
 {
