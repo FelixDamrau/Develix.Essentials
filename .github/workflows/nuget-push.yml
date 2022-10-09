@@ -21,7 +21,7 @@ jobs:
     - name: Test 🧪
       run: dotnet test -c Release --no-build --verbosity normal
     - name: Publish to NuGet 🚀
-      uses: FelixDamrau/publish-nuget@v2
+      uses: FelixDamrau/publish-nuget@v2.5.6
       with:
         PACKAGE_NAME: 'Develix.Essentials'
         PROJECT_FILE_PATH: 'src/Core/Core.csproj'
