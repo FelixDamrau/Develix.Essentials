@@ -23,7 +23,7 @@ public class GraphBuilder<TVertex> : IGraphBuilderPhase<TVertex>, IVertexAddedPh
         }
         else
         {
-            var vertex = new Vertex<TVertex> { Value = vertexValue };
+            var vertex = new Vertex<TVertex>(vertexValue);
             graph.Vertices.Add(vertex);
             lastAddedVertex = vertex;
         }
@@ -43,7 +43,7 @@ public class GraphBuilder<TVertex> : IGraphBuilderPhase<TVertex>, IVertexAddedPh
         }
         else
         {
-            var newVertex = new Vertex<TVertex> { Value = vertexValue };
+            var newVertex = new Vertex<TVertex>(vertexValue);
             graph.Vertices.Add(newVertex);
             lastAddedVertex.Successors.Add(newVertex);
         }
