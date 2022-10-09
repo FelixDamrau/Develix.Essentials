@@ -6,7 +6,7 @@ public class ResultTests
     public void ValidGenericResult()
     {
         var value = 5;
-        
+
         var result = Result.Ok(value);
 
         result.Value.Should().Be(value);
@@ -19,7 +19,7 @@ public class ResultTests
     public void InvalidGenericResult()
     {
         var message = "Fail";
-        
+
         var result = Result.Fail<int>(message);
 
         result.ValueOrDefault.Should().Be(default);
@@ -31,7 +31,7 @@ public class ResultTests
     public void InvalidGenericResultThrowsOnGetValue()
     {
         var message = "Fail";
-        
+
         var result = Result.Fail<int>(message);
 
         var exception = Record.Exception(() => result.Value);
@@ -52,10 +52,21 @@ public class ResultTests
     public void InvalidVoidResult()
     {
         var message = "Fail";
-        
+
         var result = Result.Fail(message);
 
         result.Valid.Should().BeFalse();
         result.Message.Should().Be(message);
     }
+
+    [Fact]
+    public void CovariantResultInterface()
+    {
+        var result = Result.Ok(new FooDerived());
+
+        result.Should().BeAssignableTo<IResult<Foo>>();
+    }
+
+    private class Foo { }
+    private class FooDerived : Foo { }
 }
