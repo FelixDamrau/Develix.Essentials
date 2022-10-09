@@ -6,8 +6,7 @@ namespace Develix.Essentials.Core;
 /// This class represents a successful or failed evaluation of a function with codomain <typeparamref name="T"/>,
 /// for instance, a method with the return type <typeparamref name="T"/>.
 /// </summary>
-/// <typeparam name="T"></typeparam>
-public class Result<T> : IResult
+public class Result<T> : IResult<T>
 {
     private readonly T? value;
 
@@ -16,7 +15,7 @@ public class Result<T> : IResult
     [MemberNotNullWhen(true, nameof(ValueOrDefault))]
     [MemberNotNullWhen(false, nameof(Message))]
     public bool Valid { get; }
-    
+
     /// <summary>
     /// The value of a successfully evaluated <see cref="Result{T}"/>.
     /// </summary>
@@ -31,10 +30,7 @@ public class Result<T> : IResult
         }
     }
 
-    /// <summary>
-    /// The value of a successfully evaluated <see cref="Result{T}"/> if the result is valid,
-    /// otherwise the default value of <typeparamref name="T"/>.
-    /// </summary>
+    /// <inheritdoc />
     public T? ValueOrDefault => value;
 
     /// <inheritdoc />
