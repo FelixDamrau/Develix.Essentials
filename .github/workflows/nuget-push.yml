@@ -37,7 +37,7 @@ jobs:
         echo "::set-env name=PACKAGE_VERSION::$PACKAGE_VERSION"
 
     - name: Publish NuGet package
-      run: dotnet nuget push ./artifacts/*.nupkg --source https://nuget.pkg.github.com/develix/index.json --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
+      run: dotnet nuget push ./artifacts/*.nupkg --source https://nuget.pkg.github.com/develix/index.json --api-key ${{ secrets.NUGET_API_KEY }} --skip-duplicate
 
     - name: Tag repository with package version
       if: success()
