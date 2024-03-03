@@ -88,7 +88,7 @@ public class GraphBuilderTests
         var graph = GraphBuilder<T>
             .Create()
             .AddVertex(vertex1Value)
-            .WithSuccessors(new[] { vertex2Value, vertex3Value })
+            .WithSuccessors([vertex2Value, vertex3Value])
             .AddVertex(vertex2Value)
             .AddVertex(vertex3Value)
             .WithSuccessor(vertex1Value)
@@ -109,32 +109,41 @@ public class GraphBuilderTests
         vertex3Successor.Should().BeSameAs(vertex1);
     }
 
-    public static IEnumerable<object[]> GetSingleVertexValues()
+    public static TheoryData<object> GetSingleVertexValues()
     {
-        yield return new object[] { 42 };
-        yield return new object[] { 36.7 };
-        yield return new object[] { "Banana" };
-        yield return new object[] { DateTime.Now };
-        yield return new object[] { true };
-        yield return new object[] { new Graph.EquatableTestClass(Guid.NewGuid()) };
+        return new TheoryData<object>()
+        {
+            42,
+            36.7,
+            "Banana",
+            DateTime.Now,
+            true,
+            new Graph.EquatableTestClass(Guid.NewGuid())
+        };
     }
 
-    public static IEnumerable<object[]> GetDoubleVerticesValues()
+    public static TheoryData<object, object> GetDoubleVerticesValues()
     {
-        yield return new object[] { 42, 69 };
-        yield return new object[] { 36.7, 9000.1 };
-        yield return new object[] { "Banana", "Rocket" };
-        yield return new object[] { DateTime.Now, DateTime.MinValue };
-        yield return new object[] { true, false };
-        yield return new object[] { new Graph.EquatableTestClass(Guid.NewGuid()), new Graph.EquatableTestClass(Guid.NewGuid()) };
+        return new TheoryData<object, object>()
+        {
+            { 42, 69 },
+            { 36.7, 9000.1 },
+            { "Banana", "Rocket" },
+            { DateTime.Now, DateTime.MinValue },
+            { true, false },
+            { new Graph.EquatableTestClass(Guid.NewGuid()), new Graph.EquatableTestClass(Guid.NewGuid()) },
+        };
     }
 
-    public static IEnumerable<object[]> GetTripleVerticesValues()
+    public static TheoryData<object, object, object> GetTripleVerticesValues()
     {
-        yield return new object[] { 42, 69, 367 };
-        yield return new object[] { 36.7, 9000.1, 12.0 };
-        yield return new object[] { "Banana", "Rocket", "Eggplant" };
-        yield return new object[] { DateTime.Now, DateTime.MinValue, DateTime.UnixEpoch };
-        yield return new object[] { new Graph.EquatableTestClass(Guid.NewGuid()), new Graph.EquatableTestClass(Guid.NewGuid()), new Graph.EquatableTestClass(Guid.NewGuid()) };
+        return new TheoryData<object, object, object>()
+        {
+            { 42, 69, 367 },
+            { 36.7, 9000.1, 12.0 },
+            { "Banana", "Rocket", "Eggplant" },
+            { DateTime.Now, DateTime.MinValue, DateTime.UnixEpoch },
+            { new Graph.EquatableTestClass(Guid.NewGuid()), new Graph.EquatableTestClass(Guid.NewGuid()), new Graph.EquatableTestClass(Guid.NewGuid()) },
+        };
     }
 }
