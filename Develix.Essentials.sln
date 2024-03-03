@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 		.github\workflows\dotnet-build.yml = .github\workflows\dotnet-build.yml
 		.github\workflows\nuget-push.yml = .github\workflows\nuget-push.yml
+		src\Core\readme.md = src\Core\readme.md
 	EndProjectSection
 EndProject
 Global
